@@ -1,0 +1,3 @@
+source ~/.vim/options.vim
+source ~/.vim/keybindings.vim
+echom "some configs from https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim"
