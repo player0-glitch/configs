@@ -10,7 +10,7 @@ function! s:ensure(repo)
       if !isdirectory(s:plugin_dir)
         call mkdir(s:plugin_dir,'p')
       endif
-      execute '!git cloen --depth=1 https://github.com/' .a:repo . ' ' .shellescape(path)
+      execute '!git clone --depth=1 https://github.com/' .a:repo . ' ' .shellescape(path)
     endif
 
     execute 'set runtimepath+=' . fnameescape(path)
