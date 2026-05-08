@@ -10,6 +10,9 @@ set wrap
 
 syntax on
 
+"treat dashed words as one word for dw/ciw/diw
+set iskeyword+=- 
+set laststatus=2
 set backspace=indent,eol,start
 """""""""""""""""
 " Helper functions
