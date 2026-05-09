@@ -15,3 +15,6 @@ nnoremap <leader>fg :Rg<Space>
 
 " Grep for the current string 
 nnoremap <leader>fs :Rg <C-r><C-w><CR>
+
+" Grep you config files
+nnoremap <leader>F :Files ~/.vim/<CR>

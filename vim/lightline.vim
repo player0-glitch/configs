@@ -1,6 +1,6 @@
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme' : 'tokyonight',
+      \ 'colorscheme' : 'everforest',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -15,3 +15,5 @@ let g:lightline = {
 function! LightlineFilename()
   return expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
 endfunction
+
+let g:lightline.colorscheme = 'everforest'

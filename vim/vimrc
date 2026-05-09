@@ -3,5 +3,7 @@ source ~/.vim/keybindings.vim
 source ~/.vim/plugins.vim
 source ~/.vim/filetypes.vim
 source ~/.vim/lightline.vim
-source ~/.vim/fzf
-echom "some configs from https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim"
+source ~/.vim/fzf.vim
+source ~/.vim/colors.vim
+source ~/.vim/lsp.vim
+echom "This is what inspired this config https://github.com/tonybanters/vim"

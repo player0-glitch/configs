@@ -7,7 +7,21 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 set encoding=utf8
-
+" tab and shift tab to switch buffers?
+nnoremap <leader><tab> :bnext
 "Close the buffer like lazy vim 
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+nnoremap <leader>bd :bd<CR>
+
+" switch colorscheme like lazyvim
+let g:my_themes = ['tokyonight','everforest']
+let g:idx=0 "length of my_theme array
+
+function! CycleThemes()
+    let g:idx = (g:idx + 1) % len(g:my_themes)
+    execute 'colorscheme ' . g:my_themes[g:idx]
+    echo "Theme Applied: ". g:my_themes[g:idx]
+endfunction
+" binding to change theme
+nnoremap <leader>uc :call CycleThemes()<CR>
+
 
