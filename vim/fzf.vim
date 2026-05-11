@@ -11,10 +11,13 @@ nnoremap <leader>fh :Helptags<CR>
 nnoremap <leader>fc :execute 'Rq ' . expand('%:t:r')<CR>
 
 " Grep for the input word i guess
-nnoremap <leader>fg :Rg<Space>
+nnoremap <leader>/ :Rg<Space>
 
 " Grep for the current string 
 nnoremap <leader>fs :Rg <C-r><C-w><CR>
 
 " Grep you config files
 nnoremap <leader>F :Files ~/.vim/<CR>
+
+" Clear highligting
+nnoremap <leader>\ :nohlsearch<CR>

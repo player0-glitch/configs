@@ -15,7 +15,7 @@ let lspServers = [
             \},
             \#{
             \   name: 'clangd',
-            \   filtypes: ['c','cpp'],
+            \   filtypes: ['c','cpp','h','hpp'],
             \   path: 'clangd',
             \   args:['--background-index','--clang-tidy']
             \}
@@ -27,11 +27,17 @@ autocmd User LspSetup call LspAddServer(lspServers)
 nnoremap gd :LspGotoDefinition<CR>
 nnoremap gr :LspShowReferences<CR>
 nnoremap K  :LspHover<CR>
+
 nnoremap <leader>x  :LspDiag current<CR>
 nnoremap <leader>xn :LspDiag next \| LspDiag current<CR>
 nnoremap <leader>xp :LspDiag prev \| LspDiag current<CR>
+inoremap <silent> <C-Space> <C-x><C-o>
 
-autocmd FileType php setlocal omnifunc=lsp#complete
+"Some key maps for code suggestions
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
+autocmd FileType php,c setlocal omnifunc=lsp#complete
 "Custom diagnostic icons
 autocmd User LspSetup call LspOptionsSet(#{
     \   diagSignErrorText: '✘',
@@ -39,3 +45,5 @@ autocmd User LspSetup call LspOptionsSet(#{
     \   diagSignInfoText: '»',
     \   diagSignHintText: '⚑',
     \})
+
+autocmd BufWritePre *.c,*.cpp silent! LspFormat

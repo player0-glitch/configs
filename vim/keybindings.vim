@@ -8,7 +8,8 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 set encoding=utf8
 " tab and shift tab to switch buffers?
-nnoremap <leader><tab> :bnext
+nnoremap <leader><tab> :bnext<CR>
+nnoremap <S-tab> :bprev<CR>
 "Close the buffer like lazy vim 
 nnoremap <leader>bd :bd<CR>
 
