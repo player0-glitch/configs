@@ -9,18 +9,31 @@ autocmd  User LspSetup call LspOptionsSet(lspOpts)
 let lspServers = [
             \#{
             \   name:'rust-analyzer',
-            \   filetype: ['rust'],
+            \   filetypes: ['rust'],
             \   path: 'rust-analyzer',
             \   args: []
             \},
             \#{
             \   name: 'clangd',
-            \   filtypes: ['c','cpp','h','hpp'],
-            \   path: 'clangd',
+            \   filetypes: ['c','cpp','h','hpp'],
+            \   path: '/usr/bin/clangd',
             \   args:['--background-index','--clang-tidy']
             \}
             \]
+""""
+filetype plugin indent on
+syntax on
 
+"Register servers
+
+if executable('clangd') 
+    au user lsp_setup call lsp#register_server({
+                \'name':'clangd',
+                \'cmd':{server_info['clangd']},
+                \'allowlist':['c','cpp'],
+                \})
+endif
+"""""
 autocmd User LspSetup call LspAddServer(lspServers)
 
 "Should probably move all these keymaps to ./Keybindings.vim
@@ -39,7 +52,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 autocmd FileType php,c setlocal omnifunc=lsp#complete
 autocmd FileType php,c inoremap <silent><expr> <C-n> pumvisible() ? "\<C-n>" : "\<C-x><C-o>"
-autocmd FileType php,c autocmd InsertCharPre <buffer> if getline('.')[col('.')-2] =~ '\k' | call feedkeys("\<C-x><C-o>",'n')|endif
+" autocmd FileType php,c autocmd InsertCharPre <buffer> if getline('.')[col('.')-2] =~ '\k' | call feedkeys("\<C-x><C-o>",'n')|endif
 
 
 "Custom diagnostic icons

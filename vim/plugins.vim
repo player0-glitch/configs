@@ -1,5 +1,11 @@
 " Tony said to ignore this line in the vimrc
-let s:plugin_dir=expand('~/.vim/plugged')
+ let s:plugin_dir=expand('~/.vim/plugged')
+
+" Add vim-lsp ot the runtime 
+set runtimepath+=~/vim/plugged/vim-lsp
+"Enable file types
+filetype plugin indent on
+syntax on
 
 " Helpper function to install plugin if not installed
 function! s:ensure(repo)
@@ -25,6 +31,6 @@ call s:ensure('yegappan/lsp')
 call s:ensure('ojroques/vim-oscyank')
 call s:ensure('tpope/vim-commentary')
 call s:ensure('itchyny/lightline.vim')
-
+call s:ensure('yegappan/lsp')
 "Plugins for everforest 
 call s:ensure('sainnhe/everforest')
