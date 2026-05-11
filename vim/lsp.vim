@@ -38,6 +38,10 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 autocmd FileType php,c setlocal omnifunc=lsp#complete
+autocmd FileType php,c inoremap <silent><expr> <C-n> pumvisible() ? "\<C-n>" : "\<C-x><C-o>"
+autocmd FileType php,c autocmd InsertCharPre <buffer> if getline('.')[col('.')-2] =~ '\k' | call feedkeys("\<C-x><C-o>",'n')|endif
+
+
 "Custom diagnostic icons
 autocmd User LspSetup call LspOptionsSet(#{
     \   diagSignErrorText: '✘',
