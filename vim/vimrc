@@ -6,4 +6,5 @@ source ~/.vim/lightline.vim
 source ~/.vim/fzf.vim
 source ~/.vim/colors.vim
 source ~/.vim/lsp.vim
+source ~/.vim/tabline.vim
 echom "This is what inspired this config https://github.com/tonybanters/vim"

@@ -25,6 +25,8 @@ call s:ensure('yegappan/lsp')
 call s:ensure('ojroques/vim-oscyank')
 call s:ensure('tpope/vim-commentary')
 call s:ensure('itchyny/lightline.vim')
+"Bufferline for tabs
+call s:ensure('mengelbrecht/lightline-bufferline')
 
 "Plugins for everforest 
 call s:ensure('sainnhe/everforest')

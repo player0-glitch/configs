@@ -9,7 +9,16 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
       \   'filename': 'LightlineFilename'
-      \ }
+      \ },
+      \ 'tabline':{
+      \     'left':[['buffers']],
+      \     'right':[['close']],
+      \ },
+      \ 'component_expands':{
+      \     'buffers':'lightline#bufferline#buffers'},
+      \ 'component-type':{
+      \     'buffers':'tabsel'
+      \ },
       \ }
 
 function! LightlineFilename()

@@ -7,13 +7,18 @@ set tabstop=4
 set softtabstop=4
 set smartindent
 set wrap
-
 syntax on
 
+" Change cursor size based on the mode
+" n-v-c: block cursor normal-visual-command modes
+" i: thinner cursor when inserting
+" r-cr: underline when in Replace Mode
+" set guicursor=n-v-c:block,i-ci:ver25-Cursor
 "treat dashed words as one word for dw/ciw/diw
 set iskeyword+=- 
 set laststatus=2
 set backspace=indent,eol,start
+
 """""""""""""""""
 " Helper functions
 """"""""""""""""""
@@ -61,5 +66,11 @@ endif
 set laststatus=2
 set statusline=\ [\%{HasPaste()}%F%m%r%h]\ %w\ \ :\%r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
+" $-4 Should move to the absolute end of a line
+" set virtualedit=onemore
+" nnoremap $ $l
+
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+

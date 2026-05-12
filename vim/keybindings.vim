@@ -8,9 +8,13 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 set encoding=utf8
 " tab and shift tab to switch buffers?
-nnoremap <leader><tab> :bnext
+nnoremap <leader><Tab> :bnext<CR>
+nnoremap <S-Tab> :bprev<CR>
 "Close the buffer like lazy vim 
 nnoremap <leader>bd :bd<CR>
+"Clear highlighted text
+nnoremap <silent> <Esc> :noh<CR><Esc>
+
 
 " switch colorscheme like lazyvim
 let g:my_themes = ['tokyonight','everforest']

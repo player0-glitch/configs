@@ -15,7 +15,7 @@ let lspServers = [
             \},
             \#{
             \   name: 'clangd',
-            \   filtypes: ['c','cpp'],
+            \   filetype: ['c','cpp'],
             \   path: 'clangd',
             \   args:['--background-index','--clang-tidy']
             \}
@@ -31,7 +31,9 @@ nnoremap <leader>x  :LspDiag current<CR>
 nnoremap <leader>xn :LspDiag next \| LspDiag current<CR>
 nnoremap <leader>xp :LspDiag prev \| LspDiag current<CR>
 
-autocmd FileType php setlocal omnifunc=lsp#complete
+nnorema <silent> <C-space> <C-x><C-o>
+" autocmd FileType php setlocal omnifunc=lsp#complete
+
 "Custom diagnostic icons
 autocmd User LspSetup call LspOptionsSet(#{
     \   diagSignErrorText: '✘',
@@ -39,3 +41,16 @@ autocmd User LspSetup call LspOptionsSet(#{
     \   diagSignInfoText: '»',
     \   diagSignHintText: '⚑',
     \})
+"Allowing tabbing into Pop-Up-Menu code suggestions
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+
+"Shift-Tab is already used to go to the previous buffer
+
+" Format on save (because of clangd)
+augroup LspFormatOnSave
+    autocmd!
+    autocmd BufWritePre *.c,*.cpp,*.h,*.hpp LspFormat
+augroup END
+
+"Use Enter key to confirm selection
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
